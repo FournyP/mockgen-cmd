@@ -16,11 +16,19 @@ func GenerateMock(interfaceName, interfacePath, outputPath string) error {
 		return fmt.Errorf("failed to create directory: %w", err)
 	}
 
+	var packageName string
+
+	if len(splitedOutputPath) > 1 {
+		packageName = splitedOutputPath[len(splitedOutputPath)-2]
+	} else {
+		packageName = "mocks"
+	}
+
 	cmd := exec.Command(
 		"mockgen",
 		"-source="+interfacePath,
 		"-destination="+outputPath,
-		"-package=mocks",
+		"-package="+packageName,
 	)
 
 	if err := cmd.Run(); err != nil {
