@@ -25,7 +25,6 @@ func ComputeMockPath(searchDir, outputDir, ifacePath, ifaceName string) string {
 	snakeCaseIfaceName := toSnakeCase(ifaceName)
 	snakeCaseIfaceName = strings.ToLower(snakeCaseIfaceName)
 	snakeCaseIfaceName = strings.ReplaceAll(snakeCaseIfaceName, "_interface", "")
-	snakeCaseIfaceName = strings.ReplaceAll(snakeCaseIfaceName, "_i", "")
 
 	// Define mock filename
 	mockFile := fmt.Sprintf("%s_mock.go", snakeCaseIfaceName)
